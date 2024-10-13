@@ -2,7 +2,9 @@
 <html>
 <script src="../content/js/loadDOM.js"></script>
 
-<head></head>
+<head>
+    <script src="/content/js/main.js"></script>
+</head>
 
 <body>
     <header class="site-navigation"></header>
@@ -18,18 +20,21 @@
                     <img src="/content/images/forms/sign-up.png">
                 </div>
 
-                <form action="/f/login.html">
+                <form action="/f/sign-up.html">
 
                     <label for="mail">Mail address:</label>
-                    <input type="text" id="mail" name="mailaddress" placeholder="Your mail address..">
+                    <input type="email" id="mail" name="mailaddress" placeholder="Your mail address.." oninput="checkMailAddr(this.value)" required>
+                    <div id="email-warning"></div>
                 
                     <label for="password">Password:</label>
-                    <input type="text" id="password" name="userpassword" placeholder="Your strong password..">
+                    <input type="password" id="password" name="userpassword" placeholder="Your strong password.." oninput="checkPassword(this.value)" required>
+                    <div id="password-warning"></div>
 
                     <label for="repassword">Password again:</label>
-                    <input type="text" id="repassword" name="reuserpassword" placeholder="Your strong password again..">
-                
-                    <input type="submit" value="Sign up">
+                    <input type="password" id="repassword" name="reuserpassword" placeholder="Your strong password again.." oninput="checkRePassword(this.value)" required>
+                    <div id="repassword-warning"></div>
+
+                    <input type="submit" value="Sign up" disabled>
                 
                   </form>
             </div>

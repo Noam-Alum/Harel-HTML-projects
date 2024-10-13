@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+	<url>
+	      <loc>https://project.alum.sh/</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/p/products.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/p/industries.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/p/partners.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/p/developers.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/p/about.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/f/login.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/f/contact.html</loc>
+	</url>
+	<url>
+	      <loc>https://project.alum.sh/f/sign-up.html</loc>
+	</url>
+</urlset>

@@ -2,7 +2,9 @@
 <html>
 <script src="../content/js/loadDOM.js"></script>
 
-<head></head>
+<head>
+    <script src="/content/js/main.js"></script>
+</head>
 
 <body>
     <header class="site-navigation"></header>
@@ -21,12 +23,14 @@
                 <form action="/f/login.html">
 
                     <label for="mail">Mail address:</label>
-                    <input type="text" id="mail" name="mailaddress" placeholder="Your mail address..">
+                    <input type="email" id="mail" name="mailaddress" placeholder="Your mail address.." oninput="checkMailAddr(this.value)" required>
+                    <div id="email-warning"></div>
                 
                     <label for="password">Password:</label>
-                    <input type="text" id="password" name="userpassword" placeholder="Your strong password..">
-                
-                    <input type="submit" value="Login">
+                    <input type="password" id="password" name="userpassword" placeholder="Your strong password.." oninput="checkPassword(this.value)" required>
+                    <div id="password-warning"></div>
+
+                    <input type="submit" value="Login" disabled>
                 
                 </form>
 
