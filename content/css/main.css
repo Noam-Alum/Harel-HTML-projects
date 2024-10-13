@@ -251,6 +251,38 @@ footer {
   bottom: 0;
 }
 
+footer li {
+  list-style-type: none;
+}
+
+footer a {
+  color: white;
+}
+
+/* Contact */
+
+.contact-f {
+  background-color: #3ba2034a;
+  padding: 10px 180px;
+  border-radius: 15px;
+}
+
+/* Login */
+
+.login-f {
+  background-color: #a203034a;
+  padding: 10px 180px;
+  border-radius: 15px;
+}
+
+/* Sign up */
+
+.su-f {
+  background-color: #038da24a;
+  padding: 10px 180px;
+  border-radius: 15px;
+}
+
 /* Typography */
 h1, h2, h3, h4, p, a, blockquote, li {
   font-family: 'Courier New', monospace;
@@ -304,4 +336,50 @@ blockquote {
   margin: 1.5px 5px;
   padding: 10px 20px;
   font-style: italic;
+}
+
+/* Forms */
+input[type=text], select, textarea {
+  width: 100%;
+  padding: 12px; 
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  margin-top: 6px;
+  margin-bottom: 16px;
+}
+
+textarea {
+  height: 200px;
+}
+
+input[type=submit] {
+  background-color: white;
+  color: #332d2d;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-bottom: 30px;
+}
+
+input[type=submit]:hover {
+  background-color: #c0c0c0;
+}
+
+.su-f h2, .contact-f h2, .login-f h2 {
+  text-decoration: none;
+  color: #ffffff;
+  text-align: center;
+  font-size: 30px;
+}
+
+.su-f label, .contact-f label, .login-f label {
+  text-decoration: none;
+  color: #ffffff;
+  font-size: 26px;
+  text-align: left;
+}
+
+.su-f p, .contact-f p, .login-f p {
+  color: #ffffff; 
 }
