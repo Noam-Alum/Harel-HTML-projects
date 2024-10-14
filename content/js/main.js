@@ -3,12 +3,13 @@
 var mailValid = false;
 var passwordValid = false;
 var rePasswordValid = true;
+var nameValid = false;
 
 function checkMailAddr(mailaddr) {
     const mailElement = document.querySelector('input[type="email"]');
     const emailWarning = document.getElementById('email-warning');
     const submitButton = document.querySelector('input[type="submit"]');
-    const emailWarningContents = "<blockquote><p><b>Email prerequisites:</b></p> <ol> <li>User part must not be empty.</li> <li>Valid domain.</li> <li>One <b>@</b> symble.</li> </ol></blockquote>";
+    const emailWarningContents = "<blockquote><p><b>Email requirements:</b></p> <ol> <li>User part must not be empty.</li> <li>Valid domain.</li> <li>One <b>@</b> symble.</li> </ol></blockquote>";
 
     // Check for Elements on DOM
     if (mailElement && emailWarning && submitButton) {
@@ -41,7 +42,7 @@ function checkMailAddr(mailaddr) {
                 // Allow submit
                 if (mailValid && passwordValid && rePasswordValid) {
                     submitButton.disabled = false;
-                } else if (!document.getElementById('password') && mailValid) {
+                } else if (!document.getElementById('password') && mailValid && nameValid) {
                     submitButton.disabled = false;
                 }
             }
@@ -72,7 +73,7 @@ function checkPassword(password) {
     // Test password
     const passwordElement = document.getElementById('password');
     const passwordWarning = document.getElementById('password-warning');
-    const passwordWarningContents = "<blockquote> <p><b>Password must be at least 8 characters long, include at least one uppercase letter, one lowercase letter and one number.</b></p> </blockquote>";
+    const passwordWarningContents = "<blockquote> <p><b>Password requirements:</b></p><ol><li>At least 8 characters long.</li> <li>One uppercase letter.</li> <li>One lowercase letter.</li> <li>One number.</li> <li>One special charecter.</li> </ol></blockquote>";
     const submitButton = document.querySelector('input[type="submit"]');
 
     // Check for Elements on DOM
@@ -84,27 +85,29 @@ function checkPassword(password) {
         let passwordUppercaseCount = 0;
         let passwordLowercaseCount = 0;
         let passwordDigitCount = 0;
+        let passWordSpecialCount = 0;
 
         /* 
             Test for:
             
             1. At least 8 characters long.
             2. Include at least one uppercase letter.
-            3. Include at least One lowercase letter.
-            4. Include at least One digit.
+            3. Include at least one lowercase letter.
+            4. Include at least one digit.
+            5. Include at least one special charecter.
 
         */
         if (passwordLenght >= 8) {
 
-            // Go trough each char in the password
+            // Go through each char in the password
             for (let i = 0; i < passwordLenght; i++) {
                 let char = password[i];
 
-                if (char === char.toUpperCase() && isNaN(char)) { // Check for uppercase
+                if (char >= "A" && char <= "Z") { // Check for uppercase
 
                     passwordUppercaseCount++;
 
-                } else if (char === char.toLowerCase() && isNaN(char)) { // Check for lowercase
+                } else if (char >= "a" && char <= "z") { // Check for lowercase
 
                     passwordLowercaseCount++;
 
@@ -112,10 +115,14 @@ function checkPassword(password) {
 
                     passwordDigitCount++;
 
+                } else { // Since this should not be a digit nor an alphabetical charecter I can assume its a special charecter.
+
+                    passWordSpecialCount++;
+
                 }
             }
 
-            if (passwordUppercaseCount > 0 && passwordLowercaseCount > 0 && passwordDigitCount > 0) {
+            if (passWordSpecialCount > 0 && passwordUppercaseCount > 0 && passwordLowercaseCount > 0 && passwordDigitCount > 0) {
                 passwordElement.style.border = '5px solid green';
                 passwordWarning.innerHTML = '';
                 passwordValid = true;
@@ -171,5 +178,52 @@ function checkRePassword(repassword) {
 
     } else {
         console.warn("Could not find rePasswordElement, password, submitButton or rePasswordWarning.");
+    }
+}
+
+function checkName(name) {
+    const nameElement = document.getElementById('fname');
+    const nameWarning = document.getElementById('name-warning');
+    const nameWarningContents = "<blockquote> <p><b>Names can only include alphabetical characters and spaces.</b></p> </blockquote>";
+    const submitButton = document.querySelector('input[type="submit"]');
+    let isAlpha = true;
+
+    // Check for Elements on DOM
+    if (nameElement && nameWarning && nameWarningContents) {
+        /* 
+            Test for:
+            
+            1. includes only alphabetic chars
+
+        */
+
+        // Go through each char in the name
+        for (let i = 0; i < name.length; i++) {
+            let char = name[i];
+
+            if (!(char >= "a" && char <= "z") && !(char >= "A" && char <= "Z") && char !== ' ') {
+                isAlpha = false;
+                break;
+            }
+        }
+
+        if (isAlpha) {
+            nameElement.style.border = '5px solid green';
+            nameWarning.innerHTML = '';
+            nameValid = true;
+
+            // Allow submit
+            if (mailValid && nameValid) {
+                submitButton.disabled = false;
+            }
+        } else {
+            nameElement.style.border = '5px solid red';
+            nameWarning.innerHTML = nameWarningContents;
+            nameValid = false;
+            submitButton.disabled = true;
+        }
+
+    } else {
+        console.warn("Could not find nameElement, submitButton or nameWarning.");
     }
 }
