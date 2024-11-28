@@ -41,7 +41,7 @@ li {
   margin-top: 6px;
 }
 
-a {
+.button {
   text-decoration: none;
   border: #191970 3px solid;
   background-color: #191970;
@@ -56,5 +56,34 @@ img {
   width: 600px;
   height: auto;
   margin-bottom: 20px;
+  border-radius: 25px;
+}
+
+iframe {
+  display: table;
+  margin-inline: auto;
+  margin: 40px 0px;
+  border-radius: 25px;
+}
+
+footer {
+  padding-top: 10px;
+  padding-bottom: 40px;
+  padding-left: 40px;
+  background-color: #075e5e;
+}
+
+.footer-item {
+  list-style-type: none;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.footer-item a {
+  text-decoration: none;
+  color: #191970;
+  border: #191970 3px dashed;
+  background-color: aqua;
+  padding: 4px 80px;
   border-radius: 25px;
 }
